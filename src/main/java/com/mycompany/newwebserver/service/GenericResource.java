@@ -4,6 +4,11 @@
  */
 package com.mycompany.newwebserver.service;
 
+import com.mycompany.newwebserver.Drone;
+import com.mycompany.newwebserver.Fire;
+import com.mycompany.newwebserver.Firetrucks;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -51,8 +56,17 @@ public class GenericResource {
     }
     
     @GET
-    @Path("/hello")
-    public String test(){
-        return "asdfasdf";
+    @Path("/get-report")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List getReport(){
+        List<Drone> drones = new DroneFacadeREST().findAll();
+        List<Fire> fires = new FireFacadeREST().findAll();
+        List<Firetrucks> trucks = new FiretrucksFacadeREST().findAll();
+        
+        List report = new ArrayList();
+        report.add(drones);
+        report.add(fires);
+        report.add(trucks);
+        return report;
     }
 }

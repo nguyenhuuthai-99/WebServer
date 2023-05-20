@@ -102,7 +102,7 @@ public class FiretrucksFacadeREST extends AbstractFacade<Firetrucks> {
     public Response sendTruck(@FormParam("fireId") String fireId, @FormParam("truckId") String truckId) {
         Firetrucks firetruck = new Firetrucks();
         firetruck.setId(Integer.parseInt(truckId));
-        firetruck.setName("truck number " + fireId);
+        firetruck.setName("truck number " + truckId);
         firetruck.setDesignatedFireId(Integer.parseInt(fireId));
         try {
             create(firetruck);

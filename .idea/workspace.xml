@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48b2187-d542-416d-b3bc-3265f0da2946" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/newwebserver/Firetrucks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/newwebserver/Firetrucks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/newwebserver/service/FiretrucksFacadeREST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/newwebserver/service/FiretrucksFacadeREST.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +68,7 @@
       <workItem from="1684600857619" duration="96000" />
       <workItem from="1684600957149" duration="609000" />
       <workItem from="1684601572108" duration="73000" />
-      <workItem from="1684601731610" duration="661000" />
+      <workItem from="1684601731610" duration="1373000" />
     </task>
     <task id="LOCAL-00001" summary="asdf">
       <created>1684599712282</created>
@@ -85,7 +84,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684601922676</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1684602398424</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684602398424</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1684602472781</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684602472781</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
