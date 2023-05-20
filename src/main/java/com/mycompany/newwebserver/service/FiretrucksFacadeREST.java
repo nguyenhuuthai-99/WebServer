@@ -99,11 +99,11 @@ public class FiretrucksFacadeREST extends AbstractFacade<Firetrucks> {
     @Path("send-truck")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response sendTruck(@FormParam("id") String id) {
+    public Response sendTruck(@FormParam("fireId") String fireId, @FormParam("truckId") String truckId) {
         Firetrucks firetruck = new Firetrucks();
-        //firetruck.setId(1000);
-        firetruck.setName("truck number " + id);
-        firetruck.setDesignatedFireId(Integer.parseInt(id));
+        firetruck.setId(Integer.parseInt(truckId));
+        firetruck.setName("truck number " + fireId);
+        firetruck.setDesignatedFireId(Integer.parseInt(fireId));
         try {
             create(firetruck);
             return Response.status(201).build();

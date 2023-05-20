@@ -28,7 +28,7 @@ public class Firetrucks implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -40,20 +40,20 @@ public class Firetrucks implements Serializable {
     public Firetrucks() {
     }
 
-    public Firetrucks(Long id) {
+    public Firetrucks(Integer id) {
         this.id = id;
     }
 
-    public Firetrucks(Long id, String name) {
+    public Firetrucks(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
