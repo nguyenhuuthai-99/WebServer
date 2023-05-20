@@ -1,0 +1,98 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.newwebserver;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+/**
+ *
+ * @author thainguyen
+ */
+@Entity
+@Table(name = "firetrucks")
+@NamedQueries({
+    @NamedQuery(name = "Firetrucks.findAll", query = "SELECT f FROM Firetrucks f"),
+    @NamedQuery(name = "Firetrucks.findById", query = "SELECT f FROM Firetrucks f WHERE f.id = :id"),
+    @NamedQuery(name = "Firetrucks.findByName", query = "SELECT f FROM Firetrucks f WHERE f.name = :name"),
+    @NamedQuery(name = "Firetrucks.findByDesignatedFireId", query = "SELECT f FROM Firetrucks f WHERE f.designatedFireId = :designatedFireId")})
+public class Firetrucks implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "name")
+    private String name;
+    @Column(name = "designatedFireId")
+    private Integer designatedFireId;
+
+    public Firetrucks() {
+    }
+
+    public Firetrucks(Long id) {
+        this.id = id;
+    }
+
+    public Firetrucks(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getDesignatedFireId() {
+        return designatedFireId;
+    }
+
+    public void setDesignatedFireId(Integer designatedFireId) {
+        this.designatedFireId = designatedFireId;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Firetrucks)) {
+            return false;
+        }
+        Firetrucks other = (Firetrucks) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.mycompany.newwebserver.Firetrucks[ id=" + id + " ]";
+    }
+    
+}

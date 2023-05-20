@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="assessment2" type="javax.sql.DataSource">#Fri May 19 23:16:34 AEST 2023
+password=Thailadaicalop71.7a
+jdbcDriver=com.mysql.cj.jdbc.Driver
+jdbcUrl=jdbc\:mysql\://localhost\:3306/ibdms_server?zeroDateTimeBehavior\=CONVERT_TO_NULL
+userName=root
+</Resource>
+  <Resource id="ass2" type="javax.sql.DataSource">#Fri May 19 23:22:29 AEST 2023
+password=Thailadaicalop71.7a
+jdbcDriver=com.mysql.cj.jdbc.Driver
+jdbcUrl=jdbc\:mysql\://localhost\:3306/mysql?zeroDateTimeBehavior\=CONVERT_TO_NULL
+userName=root
+</Resource>
+</resources>
