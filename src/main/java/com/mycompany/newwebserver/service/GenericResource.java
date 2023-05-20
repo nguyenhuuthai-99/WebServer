@@ -54,19 +54,20 @@ public class GenericResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content) {
     }
-    
+
     @GET
     @Path("/get-report")
     @Produces(MediaType.APPLICATION_JSON)
     public List getReport(){
-        List<Drone> drones = new DroneFacadeREST().findAll();
+
+//        List<Drone> drones = new DroneFacadeREST().findAll();
         List<Fire> fires = new FireFacadeREST().findAll();
-        List<Firetrucks> trucks = new FiretrucksFacadeREST().findAll();
-        
-        List report = new ArrayList();
-        report.add(drones);
-        report.add(fires);
-        report.add(trucks);
-        return report;
+//        List<Firetrucks> trucks = new FiretrucksFacadeREST().findAll();
+//
+//        ArrayList report = new ArrayList();
+//        report.add(drones);
+//        report.add(fires);
+//        report.add(trucks);
+        return fires;
     }
 }

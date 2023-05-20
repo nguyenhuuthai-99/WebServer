@@ -89,12 +89,6 @@ public class FiretrucksFacadeREST extends AbstractFacade<Firetrucks> {
         return em;
     }
 
-    @GET
-    @Path("hello")
-    public String hello() {
-        return "hello there";
-    }
-
     @POST
     @Path("send-truck")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
