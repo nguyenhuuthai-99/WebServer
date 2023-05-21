@@ -9,34 +9,35 @@
             function init() {
                 // put more code here in case you are concerned about browsers that do not provide XMLHttpRequest object directly
                 xmlhttp = new XMLHttpRequest();
-                xmlhttp.responseType = "json";
 
                 const url = "http://localhost:8080/newWebServer-1.0/webresources/fire/get-fire";
 
-                xmlhttp.open("GET", url, false);
-                xmlhttp.send();
+                fetch(url)
+                    .then(function(response) {
+                        return response.json();
+                    }).then(function(jsonResponse) {
+                    var select = document.getElementById("fireDropDown");
 
-                var fireIds = xmlhttp.response;
+                    var options = jsonResponse;
 
-                alert(fireIds);
+                    if(options.length === 0){
+                        alert("There is no fire to send truck")
+                    }
 
-                var select = document.getElementById("fireDropDown");
+                    for (var i = 0; i < options.length; i++) {
+                        var opt = options[i];
+                        var el = document.createElement("option");
+                        el.textContent = opt;
+                        el.value = opt;
+                        select.appendChild(el);
+                    }
+                    });
 
-
-                var options = fireIds;
-
-                for (var i = 0; i < options.length; i++) {
-                    var opt = options[i];
-                    var el = document.createElement("option");
-                    el.textContent = opt;
-                    el.value = opt;
-                    select.appendChild(el);
-                }
             }
         </script>
 
     </head>
-    <body onload="init()">   
+    <body onload="init()">
         <h2>Send a truck</h2> 
 
         <form name="truck_input" id="sendTruck" action="http://localhost:8080/newWebServer-1.0/webresources/firetrucks/send-truck" 
@@ -44,11 +45,9 @@
             <label>Truck Id</label><br /> 
             <input type="text" name="truckId"><br />
             <label>Fire Id</label><br /> 
-            <select name="fireId" id="fireDropDown"></select><br/>
+            <select name="fireId" id="fireDropDown"></select><br/><br/>
             <input type="submit" value="Submit"  />
 
         </form>
-        <p id ="dr" />
-
     </body>
 </html>
