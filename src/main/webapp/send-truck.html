@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="InputStyles.css">
         <title>Web App</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,28 +9,14 @@
             function init() {
                 // put more code here in case you are concerned about browsers that do not provide XMLHttpRequest object directly
                 xmlhttp = new XMLHttpRequest();
+                xmlhttp.responseType = "json";
 
                 const url = "http://localhost:8080/newWebServer-1.0/webresources/fire/get-fire";
 
-                var HttpClient = function() {
-                    this.get = function(aUrl, aCallback) {
-                        var anHttpRequest = new XMLHttpRequest();
-                        anHttpRequest.onreadystatechange = function() {
-                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                aCallback(anHttpRequest.responseText);
-                        }
+                xmlhttp.open("GET", url, false);
+                xmlhttp.send();
 
-                        anHttpRequest.open( "GET", aUrl, true );
-                        anHttpRequest.send( null );
-                    }
-                }
-
-                var fireIds;
-
-                var client = new HttpClient();
-                client.get(url, function(response) {
-                    fireIds = response;
-                });
+                var fireIds = xmlhttp.response;
 
                 alert(fireIds);
 
@@ -48,21 +33,6 @@
                     select.appendChild(el);
                 }
             }
-
-            /*
-             function getResponse() {
-             xmlhttp = new XMLHttpRequest();
-             xmlhttp.onreadystatechange = function() {
-             if (this.readyState == 4 && this.status == 201) {
-             alert("xmlhttp.responseText");
-             //   document.getElementById("dr").innerHTML = xmlhttp.responseText;
-             // }
-             //   document.getElementById("dr").focus();
-             //  }
-             }
-             };
-             * 
-             */
         </script>
 
     </head>
