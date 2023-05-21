@@ -92,7 +92,7 @@ public class FiretrucksFacadeREST extends AbstractFacade<Firetrucks> {
     @POST
     @Path("send-truck")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response sendTruck(@FormParam("fireId") String fireId, @FormParam("truckId") String truckId) {
         Firetrucks firetruck = new Firetrucks();
         firetruck.setId(Integer.parseInt(truckId));
@@ -100,7 +100,7 @@ public class FiretrucksFacadeREST extends AbstractFacade<Firetrucks> {
         firetruck.setDesignatedFireId(Integer.parseInt(fireId));
         try {
             create(firetruck);
-            return Response.status(201).build();
+            return Response.status(201).entity(firetruck).build();
 
         } catch (Exception e) {
             System.out.println("error");
