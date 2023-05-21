@@ -9,6 +9,8 @@ import com.mycompany.newwebserver.Fire;
 import com.mycompany.newwebserver.Firetrucks;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -23,11 +25,15 @@ import javax.ws.rs.core.MediaType;
  *
  * @author thainguyen
  */
+@Stateless
 @Path("generic")
 public class GenericResource {
 
     @Context
     private UriInfo context;
+
+    @PersistenceContext(unitName = "com.mycompany_newWebServer_war_1.0PU")
+    private EntityManager em;
 
     /**
      * Creates a new instance of GenericResource
@@ -58,16 +64,16 @@ public class GenericResource {
     @GET
     @Path("/get-report")
     @Produces(MediaType.APPLICATION_JSON)
-    public List getReport(){
+    public List<Object> getReport(){
+        List<Fire> fires = em.createNamedQuery("Fire.findAll", Fire.class).getResultList() ;
+        List<Drone> drones = em.createNamedQuery("Drone.findAll", Drone.class).getResultList() ;
+        List<Firetrucks> firetrucks = em.createNamedQuery("Firetrucks.findAll", Firetrucks.class).getResultList() ;
 
-//        List<Drone> drones = new DroneFacadeREST().findAll();
-        List<Fire> fires = new FireFacadeREST().findAll();
-//        List<Firetrucks> trucks = new FiretrucksFacadeREST().findAll();
-//
-//        ArrayList report = new ArrayList();
-//        report.add(drones);
-//        report.add(fires);
-//        report.add(trucks);
-        return fires;
+        List<Object> report = new ArrayList();
+        report.add(fires);
+        report.add(drones);
+        report.add(firetrucks);
+
+        return report;
     }
 }
